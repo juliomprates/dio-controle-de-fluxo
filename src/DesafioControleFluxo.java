@@ -29,4 +29,8 @@ public class DesafioControleFluxo {
         System.out.print("Informe o segundo número (deve ser maior que o primeiro): ");
         n2 = Integer.parseInt(sc.next());
     }
+
+    private static void validaParametros(int n1, int n2) throws InvalidParameterException {
+        if (n1 >= n2) throw new InvalidParameterException("O segundo parâmetro deve ser maior que o primeiro");
+    }
 }

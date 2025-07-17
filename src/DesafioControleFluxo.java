@@ -22,15 +22,32 @@ public class DesafioControleFluxo {
         com a seguinte mensagem: "O segundo parâmetro deve ser maior que o primeiro"
          */
 
+        System.out.println("Insira dois números para iniciar a contagem");
         int n1;
         int n2;
-        System.out.print("Informe o primeiro número (deve ser menor que o segundo): ");
-        n1 = Integer.parseInt(sc.next());
-        System.out.print("Informe o segundo número (deve ser maior que o primeiro): ");
-        n2 = Integer.parseInt(sc.next());
+        while(true) {
+            System.out.print("Informe o primeiro número (deve ser menor que o segundo): ");
+            n1 = Integer.parseInt(sc.next());
+            System.out.print("Informe o segundo número (deve ser maior que o primeiro): ");
+            n2 = Integer.parseInt(sc.next());
+            try {
+                validaParametros(n1, n2);
+                int i;
+                for (i = 1; i <= (n2 - n1); i++ ) {
+                    System.out.println("Imprimindo o número - " + i);
+                }
+                break;
+            } catch (InvalidParameterException ex){
+                System.out.println("\n=====================================================");
+                System.out.println("* " +ex.getMessage() + " *");
+                System.out.println("=====================================================\n");
+                System.out.println("Por favor, insira dois números válidos.");
+                System.out.println("Por exemplo: 2 e 5, 4 e 8, 10 e 15, etc.\n");
+            }
+        }
     }
 
     private static void validaParametros(int n1, int n2) throws InvalidParameterException {
-        if (n1 >= n2) throw new InvalidParameterException("O segundo parâmetro deve ser maior que o primeiro");
+        if (n1 >= n2) throw new InvalidParameterException("O segundo número deve ser maior que o primeiro");
     }
 }
